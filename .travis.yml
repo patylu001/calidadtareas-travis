@@ -3,9 +3,21 @@ jdk: oraclejdk13
 services:
 - xvfb
 
-before_install:
-  - "export DISPLAY=:99.0"  
-  - sleep 3
+sudo: required
   
 script: mvn surefire:test -Dtest=Parcial2
+
+
+before_install:
+- sudo apt-get clean
+- sudo apt-get update
+- sudo apt-get install dbus-x11 dpkg
+- export DISPLAY=:99.0
+- export CHROME_BIN=/usr/bin/google-chrome
+- wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+- sudo dpkg -i google-chrome*.deb
+- wget https://chromedriver.storage.googleapis.com/78.0.3904.70/chromedriver_linux64.zip
+- unzip chromedriver_linux64.zip
+- sudo cp chromedriver /usr/bin
+     
 
