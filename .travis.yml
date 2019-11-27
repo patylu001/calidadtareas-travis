@@ -7,6 +7,5 @@ before_install:
   - "export DISPLAY=:99.0"  
   - sleep 3
   
-script:
-mvn surefire:test -Dtest=Parcial2
+script: mvn surefire:test -Dtest=Parcial2
 
